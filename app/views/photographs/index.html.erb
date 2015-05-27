@@ -1,2 +1,35 @@
-<h1>Photographs#index</h1>
-<p>Find me in app/views/photographs/index.html.erb</p>
+<h1>#626eats</h1>
+
+<div class="container">
+        <% @photographs.in_groups_of(4) do |photograph| %>
+            <ul class="row">
+                <% photograph.each do |p| %>
+                    <li class="instagram-pic col-xs-3">
+                        <img class="img-responsive" src=<%= p["images"]["standard_resolution"]["url"] %>>
+                        <p><%= p["caption"]["text"] %></p>
+                        <% unless p["comments"]["data"][0].nil? %> 
+                            <p><%= p["comments"]["data"][0]["text"]%></p>
+                        <% end %>
+                    </li>
+                <% end %>
+            </ul>
+        <% end %>
+</div>
+
+<!--
+<div class="container">
+    <ul class="row">
+        <% @photographs.each do |photograph| %>
+            <li class="instagram-pic col-xs-3">
+                <img class="img-responsive" src=<%= photograph["images"]["standard_resolution"]["url"] %>>
+                <p><%= photograph["caption"]["text"] %></p>
+                <% unless photograph["comments"]["data"][0].nil? %> 
+                    <p><%= photograph["comments"]["data"][0]["text"]%></p>
+                <% end %>
+            </li>
+        <% end %>
+    </ul>
+</div>
+-->
+
+<%= @photographs %>
