@@ -3,11 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+body {
+    background-color: #EEEEEE;
+}
+
 p {
     word-wrap: break-word;
-    
+}
+
+.logo {
+    color: #1abc9c;
 }
 
 .instagram-pic {
     display: inline-block;
 }
+
+.btn-next-container {
+    margin-top: 50px;
+    width: 100%;
+    .btn-next {
+        background-color: blue;
+        color: white;
+        margin: 0 auto;
+        padding: 45px;
+        display: block;
+        height: 120px;
+        width: 120px;
+        border: 1px solid black;
+        border-radius: 50%;
+    }
+}
+
+
+
