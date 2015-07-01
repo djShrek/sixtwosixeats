@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   CALLBACK_URL = "http://localhost:3000/oauth/instagram/callback"
 
   Instagram.configure do |config|
-    config.client_id = ENV["INSTAGRAM_CLIENT_ID"]
+    config.client_id     = ENV["INSTAGRAM_CLIENT_ID"]
     config.client_secret = ENV["INSTAGRAM_CLIENT_SECRET"]
   end
 
@@ -17,13 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def instagram
-    10.times do 
-      puts params[:code]
-    end
     response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
-    10.times do
-      puts response
-    end
   end
 
 
