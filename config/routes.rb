@@ -1,11 +1,23 @@
 Rails.application.routes.draw do
-  devise_for :users
+  #devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
+
+=begin
+  devise_scope :user do
+    get 'sign_in',  :to => 'devise/sessions#new',     :as => :new_user_session
+    get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
+=end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'photographs#index' 
+
+  get '/oauth/connect',            to: 'application#redirect_to_instagram_auth'
+  get '/oauth/instagram/callback', to: 'application#instagram'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
