@@ -16,9 +16,4 @@ class ApplicationController < ActionController::Base
     redirect_to Instagram.authorize_url(:redirect_uri => CALLBACK_URL)
   end
 
-  def instagram
-    response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
-  end
-
-
 end

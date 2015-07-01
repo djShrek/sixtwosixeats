@@ -9,6 +9,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def instagram
     response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
+    
+    5.times do
+      puts response
+    end
+    @user = User.from_omniauth(response)
 
     redirect_to root_path
   end
