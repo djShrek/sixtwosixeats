@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701052339) do
+ActiveRecord::Schema.define(version: 20150702075843) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150701052339) do
     t.string   "username"
     t.text     "website"
     t.text     "access_token"
+    t.string   "uid"
   end
 
   add_index "users", ["access_token"], name: "index_users_on_access_token"
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150701052339) do
   add_index "users", ["full_name"], name: "index_users_on_full_name"
   add_index "users", ["profile_picture"], name: "index_users_on_profile_picture"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["uid"], name: "index_users_on_uid"
   add_index "users", ["username"], name: "index_users_on_username"
   add_index "users", ["website"], name: "index_users_on_website"
 
