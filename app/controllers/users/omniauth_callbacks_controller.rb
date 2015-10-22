@@ -16,9 +16,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
     if @user.persisted?
       sign_in @user
-      set_flash_message(:notice, :success, :kind => "Instagram")
+      flash[:notice] = "Signed in!"
     else
-      set_flash_message(:notice, :warning, :kind => "Instagram")
+      session["devise.user_attributes"] = @user.attributes
+      flash[:notice] ="Not signed in!"
     end
     redirect_to root_path
   end
