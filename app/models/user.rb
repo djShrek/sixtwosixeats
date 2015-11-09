@@ -1,12 +1,12 @@
 class User < ActiveRecord::Base
+  # include Hashie::Extensions::IndifferentAccess
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
   devise :rememberable, :trackable,
          :omniauthable, :omniauth_providers => [:instagram]
-  
-  def self.from_omniauth(auth)
 
+  def self.from_omniauth(auth)
     hash = {}
     auth.user.each do |k,v|
       hash[k] = v
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
       user.website         = hash["website"]
       user.profile_picture = hash["profile_picture"]
       user.uid             = hash["id"]
-      user.email           = hash["email"]
+      user.email           = hash["email"] || nil
       user.access_token    = auth.access_token
     end
   end
