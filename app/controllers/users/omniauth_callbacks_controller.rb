@@ -9,10 +9,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def instagram
     response = Instagram.get_access_token(params[:code], :redirect_uri => CALLBACK_URL)
-10.times do
-  puts response
-  puts response.inspect
-end
     @user = User.from_omniauth(response)
     if @user.persisted?
       sign_in @user
