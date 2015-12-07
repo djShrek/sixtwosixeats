@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
       user.website         = hash["website"]
       user.profile_picture = hash["profile_picture"]
       user.uid             = hash["id"]
-      user.email           = hash["email"] || nil
+      user.email           = hash["email"]
       user.access_token    = auth.access_token
     end
   end
