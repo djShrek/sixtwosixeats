@@ -15,7 +15,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       flash[:success] = "Signed in!"
     else
       session["devise.user_attributes"] = @user.attributes
-      flash[:notice] ="Not signed in!"
+      flash[:notice] = "Not signed in!"
     end
     redirect_to root_path
   end

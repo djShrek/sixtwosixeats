@@ -1,65 +1,21 @@
 <div class="container">
-        <% @photographs.in_groups_of(4) do |photograph| %>
-            <ul class="row">
-                <% photograph.each do |p| %>
-                    <li class="instagram-pic col-xs-3">
-                        <a href="<%= p['link'] %>"><img class="img-responsive img-thumbnail" src=<%= p["images"]["standard_resolution"]["url"] %>></a>
-                        <% unless p["user"]["username"].nil? %> 
-                             <span><a href="https://instagram.com/<%= p['user']['username'] %>">@<%= p["user"]["username"] %></a></span>:
-                        <% end %>
-                        <p><%= p["caption"]["text"] %></p>
-                        <% unless p["location"].nil? %> 
-                             <span>Location: <%= p["location"]["name"] %></span>
-                        <% end %>
-                    </li>
-                <% end %>
-            </ul>
-        <% end %>
-    <div class="btn-next-container">
-        <%= link_to "Load More", { controller: "photographs", action: "index", instagram_url: @pagination }, class: "btn-next" %>
-    </div>
-    
-</div>
-
-
-
-<!--
-<div class="container">
+  <% @photographs.in_groups_of(4) do |photograph| %>
     <ul class="row">
-        <% @photographs.each do |photograph| %>
-            <li class="instagram-pic col-xs-3">
-                <img class="img-responsive" src=<%= photograph["images"]["standard_resolution"]["url"] %>>
-                <p><%= photograph["caption"]["text"] %></p>
-                <% unless photograph["comments"]["data"][0].nil? %> 
-                    <p><%= photograph["comments"]["data"][0]["text"]%></p>
-                <% end %>
-            </li>
-        <% end %>
+      <% photograph.each do |p| %>
+        <li class="instagram-pic col-xs-3">
+          <a href="<%= p['link'] %>"><img class="img-responsive img-thumbnail" src=<%= p["images"]["standard_resolution"]["url"] %>></a>
+          <% unless p["user"]["username"].nil? %> 
+            <a href="https://instagram.com/<%= p['user']['username'] %>">@<%= p["user"]["username"] %></a>
+          <% end %>
+          <p><%= p["caption"]["text"] %></p>
+          <% unless p["location"].nil? %> 
+               <span>Location: <%= p["location"]["name"] %></span>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
+  <% end %>
+  <div class="btn-next-container">
+      <%= link_to "Load More", { controller: "photographs", action: "index", instagram_url: @pagination }, class: "btn-next" %>
+  </div>
 </div>
-
-<ul>
-    <% @photographs.each do |photo|  %>
-        <li><%= photo %></li>
-        <% unless photo["tags"].nil? %> 
-             <li>Tags: <%= photo["tags"] %></li>
-        <% end %>
-        <% unless photo["location"].nil? %> 
-             <li>Location: <%= photo["location"]["name"] %></li>
-        <% end %>
-        <% unless photo["user"]["username"].nil? %> 
-             <li>Username: <%= photo["user"]["username"] %></li>
-        <% end %>
-        <% unless photo["user"]["profile_picture"].nil? %> 
-             <li>Profile Pic: <img src=<%= photo["user"]["profile_picture"]%>></li>
-        <% end %>
-        <% unless photo["comments"]["count"].nil? %> 
-             <li>Comment number: <%= photo["comments"]["count"]%></li>
-        <% end %>
-        <% unless photo["likes"]["count"].nil? %> 
-              <li>Likes: <%= photo["likes"]["count"]%></li>
-        <% end %>
-    <% end %> 
-</ul>
-
--->

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     get '/oauth/instagram/callback' => 'users/omniauth_callbacks#instagram'
   end
-  get '/oauth/connect',            to: 'application#redirect_to_instagram_auth'
+  get '/oauth/connect', to: 'application#redirect_to_instagram_auth'
   
   root 'photographs#index'
 end

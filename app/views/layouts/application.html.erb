@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Six26eats</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Six26eats</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-  <nav class="navbar navbar-default">
-      <div class="container">
-          <a href="/" class="navbar-brand">#626eats</a>
-          <a href="/oauth/connect" class="instagram-sign-in navbar-brand navbar-right" >Sign in with Instagram</a>
-      </div>
-  </nav>
+    <nav class="navbar navbar-default">
+      <a href="/" class="navbar-brand">#626eats</a>
+    </nav>
 
-  <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %>"><%= value %></div>
-  <% end %>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
 
 
 
-<%= yield %>
+  <%= yield %>
 
-</body>
+  </body>
 </html>
